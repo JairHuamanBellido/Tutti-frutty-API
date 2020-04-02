@@ -19,10 +19,10 @@ describe('Rooms Controller', () => {
       
     }).compile();
 
-    controller = module.get<RoomsController>(RoomsController);
+    controller = await module.get<RoomsController>(RoomsController);
   });
 
-  it('should be defined', () => {
+  it('should be defined', async () => {
     expect(controller).toBeDefined();
   });
 });

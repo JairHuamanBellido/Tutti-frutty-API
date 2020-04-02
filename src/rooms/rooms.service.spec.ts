@@ -22,10 +22,10 @@ describe('RoomsService', () => {
       exports: [RoomsService],
     }).compile();
 
-    service = module.get<RoomsService>(RoomsService);
+    service = await module.get<RoomsService>(RoomsService);
   });
 
-  it('should be defined', () => {
+  it('should be defined',async () => {
     expect(service).toBeDefined();
   });
 });
