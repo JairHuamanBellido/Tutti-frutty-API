@@ -4,6 +4,7 @@ import { RoomsService } from './rooms.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { config} from "dotenv";
 import { RoomSchema } from './schemas/room.schema';
+import { connections } from 'mongoose';
 config();
 describe('Rooms Controller', () => {
   let controller: RoomsController;
@@ -19,10 +20,17 @@ describe('Rooms Controller', () => {
       
     }).compile();
 
-    controller = await module.get<RoomsController>(RoomsController);
+    controller =  module.get<RoomsController>(RoomsController);
   });
 
-  it('should be defined', async () => {
-    expect(controller).toBeDefined();
+  it('should be defined',  () => {
+    expect( controller).toBeDefined();
+  
   });
+
+  afterEach( (done)=>{
+    connections[1].close (()=>{
+      done();
+    })
+  })
 });
