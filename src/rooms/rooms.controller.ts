@@ -13,6 +13,6 @@ export class RoomsController {
     async findAll(@Res() res:Response){
 
 
-        res.json( await this.roomService.findAll());
+        // res.json( await this.roomService.findAll());
     }
 }
